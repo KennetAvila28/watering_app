@@ -47,7 +47,7 @@ android {
         applicationId "com.kennet.wateringsystem.watering_system"
         // You can update the following values to match your application needs.
         // For more information, see: https://docs.flutter.dev/deployment/android#reviewing-the-gradle-build-configuration.
-        minSdkVersion 20
+        minSdkVersion 21
         targetSdkVersion flutter.targetSdkVersion
         versionCode flutterVersionCode.toInteger()
         versionName flutterVersionName
@@ -60,18 +60,18 @@ android {
             signingConfig signingConfigs.debug
         }
     }
-    productFlavors{
-        develop{
-            dimension "app"
-            resValue "string", "app_name", "WateringSystem"
-            applicationId "mx.com.kennet.watering.system"
-        }
-        production{
-            dimension "app"
-            resValue "string", "app_name", "WateringSystem"
-            applicationId "mx.com.kennet.watering.system"
-        }
-    }
+    // productFlavors{
+    //     develop{
+    //         dimension "app"
+    //         resValue "string", "app_name", "WateringSystem"
+    //         applicationId "mx.com.kennet.watering.system"
+    //     }
+    //     production{
+    //         dimension "app"
+    //         resValue "string", "app_name", "WateringSystem"
+    //         applicationId "mx.com.kennet.watering.system"
+    //     }
+    // }
 }
 
 flutter {

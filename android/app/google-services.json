@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "629662337715",
+    "project_id": "aqua-garden",
+    "storage_bucket": "aqua-garden.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:629662337715:android:68d884f7653a761a4b7ec6",
+        "android_client_info": {
+          "package_name": "com.kennet.wateringsystem.watering_system"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "629662337715-6gbu9uamsd4pnocg362l6pnvglngms15.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDK3pwFhA7QmA9GAWBXNdCBteZkh7h9NRs"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "629662337715-6gbu9uamsd4pnocg362l6pnvglngms15.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
