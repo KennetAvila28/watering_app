@@ -11,6 +11,7 @@ class Images {
   final addDevice = "$iconsRoute/add_device.svg";
   final appIcon = "$iconsRoute/app_icon.svg";
   final appIconPNG = "$imagesRoute/app_icon.png";
+  final appTextIcon = "$imagesRoute/text_icon_app.png";
   final noConnect = "$iconsRoute/connect_no.svg";
   final yesConnect = "$iconsRoute/connect_yes.svg";
   final devices = "$iconsRoute/devices.svg";

@@ -9,7 +9,7 @@
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
 import 'package:auto_route/auto_route.dart' as _i8;
-import 'package:watering_system/presentation/home_screen/home_screen.dart'
+import 'package:watering_system/presentation/device_screen/device_screen.dart'
     as _i2;
 import 'package:watering_system/presentation/main_screen/main_screen.dart'
     as _i3;
@@ -19,10 +19,10 @@ abstract class $AppRouter extends _i8.RootStackRouter {
 
   @override
   final Map<String, _i8.PageFactory> pagesMap = {
-    HomeScreen.name: (routeData) {
+    DeviceScreen.name: (routeData) {
       return _i8.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i2.HomeScreen(),
+        child: const _i2.DeviceScreen(),
       );
     },
     MainScreen.name: (routeData) {
@@ -49,15 +49,15 @@ class FavoritesScreen extends _i8.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i2.HomeScreen]
-class HomeScreen extends _i8.PageRouteInfo<void> {
-  const HomeScreen({List<_i8.PageRouteInfo>? children})
+/// [_i2.DeviceScreen]
+class DeviceScreen extends _i8.PageRouteInfo<void> {
+  const DeviceScreen({List<_i8.PageRouteInfo>? children})
       : super(
-          HomeScreen.name,
+          DeviceScreen.name,
           initialChildren: children,
         );
 
-  static const String name = 'HomeScreen';
+  static const String name = 'DeviceScreen';
 
   static const _i8.PageInfo<void> page = _i8.PageInfo<void>(name);
 }

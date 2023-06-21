@@ -1,15 +1,11 @@
 import 'dart:async';
 import 'dart:developer';
 import 'package:flutter/material.dart';
-import 'package:watering_system/presentation/presentation.dart';
 import 'package:watering_system/infrastructure/di/app_initializer.dart';
 import 'package:watering_system/infrastructure/flavor/flavor_config.dart';
+import 'package:watering_system/presentation/super_sanches_main_app.dart';
 
 void main() async {
-  await AppInitializer.setupPrerequisites(
-    Flavor.dev,
-  );
-
   final multiProvider = Directionality(
       textDirection: TextDirection.ltr,
       child: Banner(
@@ -19,6 +15,9 @@ void main() async {
       ));
   runZonedGuarded(
     () async {
+      await AppInitializer.setupPrerequisites(
+        Flavor.dev,
+      );
       runApp(multiProvider);
     },
     (error, stack) {

@@ -13,26 +13,8 @@ class AppRouter extends $AppRouter {
         AutoRoute(
             page: MainScreen.page, path: RoutePaths.mainScreen, initial: true),
         AutoRoute(
-            page: HomeScreen.page, path: RoutePaths.homeScreen, initial: false),
-        AutoRoute(
-            page: ProductsScreen.page,
-            path: RoutePaths.productScreen,
-            initial: false),
-        AutoRoute(
-            page: PromosScreen.page,
-            path: RoutePaths.promosScreen,
-            initial: false),
-        AutoRoute(
-            page: FavoritesScreen.page,
-            path: RoutePaths.favoritesScreen,
-            initial: false),
-        AutoRoute(
-            page: ProfileScreen.page,
-            path: RoutePaths.profileScreen,
-            initial: false),
-        AutoRoute(
-            page: ScannerScreen.page,
-            path: RoutePaths.scannerScreen,
+            page: DeviceScreen.page,
+            path: RoutePaths.DeviceScreen,
             initial: false),
       ];
 }
