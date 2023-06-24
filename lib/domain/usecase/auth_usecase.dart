@@ -23,8 +23,4 @@ class AuthUseCase extends BaseUseCase<AuthRepository> {
   Future<void> signOut() async {
     return repository.signOut();
   }
-
-  Future<User?> user() async {
-    return repository.user;
-  }
 }

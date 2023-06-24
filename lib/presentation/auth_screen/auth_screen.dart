@@ -17,7 +17,14 @@ class AuthScreen extends StatelessWidget {
     final cubit = context.read<AuthScreenCubit>();
     void onForgotPassword(BuildContext context) {
       final formKey = GlobalKey<FormState>();
-      showModal(context, ForgotPassword(key: formKey, onTap: () {}));
+      showModal(
+          context,
+          ForgotPassword(
+              key: formKey,
+              onTap: () {
+                cubit.useCase.sendResetPasswordLink(cubit.forgotPass);
+              },
+              onChanged: cubit.onChangeForgotPass));
     }
 
     return BlocListener<AuthScreenCubit, BaseState>(

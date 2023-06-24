@@ -4,7 +4,6 @@ import 'package:watering_system/infrastructure/architecture/data/base_response.d
 import 'package:watering_system/presentation/utils/error_handler.dart';
 
 abstract class AuthRepository extends BaseRepository {
-  Future<User?> get user;
   Future<BaseResponse<UserCredential, FirebaseErrorResponse>>
       signInWithEmailAndPassword(
     String email,
@@ -15,5 +14,4 @@ abstract class AuthRepository extends BaseRepository {
 
   Future<BaseResponse<bool, FirebaseErrorResponse>> sendResetPasswordLink(
       String email);
-  void init();
 }

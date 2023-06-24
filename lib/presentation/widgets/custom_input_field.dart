@@ -7,6 +7,7 @@ class CustomInputField extends StatefulWidget {
   final Widget? prefixIcon;
   final bool isPassword;
   final String? Function(String?)? validator;
+  final InputDecoration? decoration;
   const CustomInputField({
     Key? key,
     this.onChanged,
@@ -15,6 +16,7 @@ class CustomInputField extends StatefulWidget {
     this.prefixIcon,
     this.isPassword = false,
     this.validator,
+    this.decoration,
   }) : super(key: key);
 
   @override
@@ -82,7 +84,7 @@ class _CustomInputFieldState extends State<CustomInputField> {
                   widget.onChanged!(text);
                 }
               },
-              decoration: inputDecoration,
+              decoration: widget.decoration ?? inputDecoration,
             ),
             if (state.hasError)
               Text(

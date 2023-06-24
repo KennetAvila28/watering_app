@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:watering_system/domain/repositories/device_screen_repository.dart';
 import 'package:injectable/injectable.dart';
 
@@ -5,5 +6,13 @@ import 'package:injectable/injectable.dart';
 
 @Injectable(as: DeviceScreenRepository)
 class DeviceScreenRepositoryImpl extends DeviceScreenRepository {
-  DeviceScreenRepositoryImpl();
+  DeviceScreenRepositoryImpl(this._db);
+  final FirebaseFirestore _db;
+  @override
+  CollectionReference get getCollection => _db.collection("users");
+
+  @override
+  Future<void> write(String id, data) async {
+    return;
+  }
 }

@@ -12,7 +12,7 @@ class Fonts {
       Text(text,
           style: style ??
               GoogleFonts.montserrat(
-                fontWeight: FontWeight.w400,
+                fontWeight: FontWeight.w700,
                 color: color,
                 fontSize: size,
                 decoration: underline,

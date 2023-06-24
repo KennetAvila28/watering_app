@@ -9,7 +9,6 @@
 // coverage:ignore-file
 
 // ignore_for_file: no_leading_underscores_for_library_prefixes
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:get_it/get_it.dart' as _i1;
 import 'package:injectable/injectable.dart' as _i2;
 
@@ -31,11 +30,10 @@ _i1.GetIt $initGetIt(
     environment,
     environmentFilter,
   );
-  gh.factory<_i5.AuthRepository>(
-      () => _i6.AuthRepositoryImpl(FirebaseAuth.instance));
+  gh.factory<_i5.AuthRepository>(() => _i6.AuthRepositoryImpl(getIt.get()));
   gh.factory<_i7.AuthUseCase>(() => _i7.AuthUseCase(gh<_i5.AuthRepository>()));
   gh.factory<_i8.DeviceScreenRepository>(
-      () => _i9.DeviceScreenRepositoryImpl());
+      () => _i9.DeviceScreenRepositoryImpl(getIt.get()));
   gh.factory<_i10.DeviceScreenUseCase>(
       () => _i10.DeviceScreenUseCase(gh<_i8.DeviceScreenRepository>()));
   return getIt;

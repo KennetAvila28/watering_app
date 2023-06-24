@@ -1,9 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:watering_system/presentation/utils/utils.dart';
+import 'package:watering_system/presentation/widgets/custom_input_field.dart';
 
 class ForgotPassword extends StatelessWidget {
-  const ForgotPassword({required Key key, required this.onTap});
+  // ignore: use_key_in_widget_constructors
+  const ForgotPassword(
+      {required Key key, required this.onTap, required this.onChanged});
   final void Function() onTap;
+  final void Function(String) onChanged;
 
   @override
   Widget build(BuildContext context) {
@@ -12,7 +16,7 @@ class ForgotPassword extends StatelessWidget {
       child: Form(
         key: super.key,
         child: SizedBox(
-          height: MediaQuery.of(context).size.height * 0.3,
+          height: MediaQuery.of(context).size.height,
           child: Column(
             children: [
               Row(
@@ -35,7 +39,16 @@ class ForgotPassword extends StatelessWidget {
                         size: 14,
                       ),
                     ),
-                    TextField(
+                    CustomInputField(
+                      label: '',
+                      inputType: TextInputType.emailAddress,
+                      validator: (value) {
+                        if (!isValidEmail(value!)) {
+                          return "Ingrese un correo valido";
+                        }
+                        return null;
+                      },
+                      onChanged: onChanged,
                       decoration: InputDecoration(
                         filled: true,
                         border: OutlineInputBorder(

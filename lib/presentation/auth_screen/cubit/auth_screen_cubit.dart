@@ -18,6 +18,7 @@ class AuthScreenCubit extends BaseCubit {
   final formKey = GlobalKey<FormState>();
   String email = '';
   String password = '';
+  String forgotPass = '';
 
   void onChangePass(String input) {
     password = input;
@@ -25,6 +26,10 @@ class AuthScreenCubit extends BaseCubit {
 
   void onChangeEmail(String input) {
     email = input;
+  }
+
+  void onChangeForgotPass(String input) {
+    forgotPass = input;
   }
 
   void onSend() async {

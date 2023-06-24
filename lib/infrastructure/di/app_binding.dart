@@ -1,10 +1,12 @@
 import 'dart:developer';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:intl/intl.dart';
 import 'package:watering_system/infrastructure/utils/shared_preferences_manager.dart';
 import 'package:watering_system/presentation/utils/resources/images.dart';
 
-import '../flavor/flavor_config.dart';
+import 'package:watering_system/infrastructure/flavor/flavor_config.dart';
 import 'inject_config.dart';
 
 /// Injecting app main dependencies so can be accessed from everywhere
@@ -21,6 +23,8 @@ class AppBinding {
     await _injectSharedPreferences();
     await _injectImages();
     await _injectIntl();
+    await _injectAuth();
+    await _injectDb();
   }
 
   static Future _injectImages() async {
@@ -38,29 +42,20 @@ class AppBinding {
     getIt.registerSingleton(intlNumberCurrency);
   }
 
-  ///Calls [_injectDioForNetworking] prepares base URL
+  static Future _injectAuth() async {
+    getIt.registerSingleton(FirebaseAuth.instance);
+  }
+
+  static Future _injectDb() async {
+    getIt.registerSingleton(FirebaseFirestore.instance);
+  }
+
+  // Calls [_injectDioForNetworking] prepares base URL
   static Future _injectNetworkingDependencies() async {
     //  final dio = await _injectDioForNetworking();
     final baseUrl = getIt.get<FlavorConfig>().baseUrl;
     log("BaseUrl from inject: $baseUrl");
   }
-
-  ///creating Dio instance to be injected later withing the services,
-  /// and assign custom interceptor
-  /// Note: order of interceptors matters
-  /// Provider<SharedPreferencesManager>(create: (_)=>SharedPreferencesManager()),
-  // Provider<NumberFormat>(create: (_)=>NumberFormat.simpleCurrency()),
-  // Provider<DioProvider>(create: (_)=>DioProvider(dio:getDio()))
-  // static Future<DioProvider> _injectDioForNetworking() async {
-  //   final dio = DioProvider(dio: getDio());
-
-  //   ///attach app's interceptor
-  //   // dio.interceptors.add(AppInterceptor());
-
-  //   getIt.registerSingleton(dio);
-
-  //   return dio;
-  // }
 
   ///prepare flavor config depending on the selected passed [flavor]
   static void _injectFlavor(Flavor flavor) {

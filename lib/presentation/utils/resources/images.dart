@@ -20,4 +20,6 @@ class Images {
   final sad = "$iconsRoute/sad.svg";
   final settings = "$iconsRoute/settings.svg";
   final temperature = "$iconsRoute/temperature.svg";
+  final deviceIcon = "$iconsRoute/device_icon.svg";
+  final rain = "$iconsRoute/rain.svg";
 }
