@@ -62,8 +62,9 @@ class DeviceScreen extends StatelessWidget {
                                       fit: BoxFit.scaleDown,
                                       width: 12,
                                     ),
-                                    // Fonts.normalText("%${item.ambHumidity}",
-                                    //     size: 11)
+                                    Fonts.normalText(
+                                        "%${snapshot.data!.docs[index].get("humidityA")}",
+                                        size: 14)
                                   ],
                                 ),
                                 const SizedBox(
@@ -76,7 +77,9 @@ class DeviceScreen extends StatelessWidget {
                                       fit: BoxFit.scaleDown,
                                       width: 12,
                                     ),
-                                    // Fonts.normalText("%${item.temp}", size: 11)
+                                    Fonts.normalText(
+                                        "%${snapshot.data!.docs[index].get("temp")}",
+                                        size: 14)
                                   ],
                                 ),
                               ],
