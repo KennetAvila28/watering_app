@@ -1,4 +1,3 @@
-import 'package:watering_system/domain/models/device.dart';
 
 // List<Device> deviceList = [
 //   Device(

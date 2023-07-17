@@ -48,8 +48,7 @@ class DeviceScreen extends StatelessWidget {
                                       fit: BoxFit.scaleDown,
                                       width: 14,
                                     ),
-                                    Fonts.normalText(
-                                        "${device.humidity}%",
+                                    Fonts.normalText("${device.humidity}%",
                                         size: 14)
                                   ],
                                 ),
@@ -63,8 +62,7 @@ class DeviceScreen extends StatelessWidget {
                                       fit: BoxFit.scaleDown,
                                       width: 12,
                                     ),
-                                    Fonts.normalText(
-                                        "${device.humidityA}%",
+                                    Fonts.normalText("${device.humidityA}%",
                                         size: 14)
                                   ],
                                 ),
@@ -78,8 +76,7 @@ class DeviceScreen extends StatelessWidget {
                                       fit: BoxFit.scaleDown,
                                       width: 12,
                                     ),
-                                    Fonts.normalText(
-                                        "${device.temp}°C",
+                                    Fonts.normalText("${device.temp}°C",
                                         size: 14)
                                   ],
                                 ),
@@ -90,7 +87,7 @@ class DeviceScreen extends StatelessWidget {
                         leading:
                             SvgPicture.asset(getIt.get<Images>().deviceIcon),
                         trailing: InkWell(
-                          onTap: () => {},
+                          onTap: () => cubit.details(context, device),
                           child: SizedBox(
                             child: SvgPicture.asset(
                               getIt.get<Images>().settings,

@@ -1,7 +1,5 @@
 import 'dart:convert';
 
-import 'package:cloud_firestore/cloud_firestore.dart';
-
 class Device {
   String ip;
   bool isConnected;
@@ -70,7 +68,7 @@ class Device {
         ip: map['ip'] ?? '',
         isConnected: map['isConnected'] ?? false,
         humidity: map['humidity'] ?? 0,
-        temp:map['temp'] ?? 0,
+        temp: map['temp'] ?? 0,
         humidityA: map['humidityA'] ?? 0,
         userId: map['userId'] ?? '',
         name: map['name'] ?? '',
