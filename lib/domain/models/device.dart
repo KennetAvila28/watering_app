@@ -1,40 +1,55 @@
 import 'dart:convert';
 
+import 'package:cloud_firestore/cloud_firestore.dart';
+
 class Device {
   String ip;
   bool isConnected;
-  int humidity;
-  int temp;
-  int ambHumidity;
+
+  double humidity;
+  double temp;
+  double humidityA;
   String userId;
   String name;
+  bool isActive;
+
+  bool isManual;
+  bool celcius;
+  bool watering;
+  String latest;
   Device({
     required this.ip,
     required this.isConnected,
     required this.humidity,
     required this.temp,
-    required this.ambHumidity,
+    required this.humidityA,
     required this.userId,
     required this.name,
+    required this.latest,
+    this.isActive = false,
+    this.celcius = true,
+    this.isManual = false,
+    this.watering = false,
   });
 
-  Device copyWith({
-    String? ip,
-    bool? isConnected,
-    int? humidity,
-    int? temp,
-    int? ambHumidity,
-    String? userId,
-    String? name,
-  }) {
+  Device copyWith(
+      {String? ip,
+      bool? isConnected,
+      double? humidity,
+      double? temp,
+      double? humidityA,
+      String? userId,
+      String? name,
+      String? latest}) {
     return Device(
       ip: ip ?? this.ip,
       isConnected: isConnected ?? this.isConnected,
       humidity: humidity ?? this.humidity,
       temp: temp ?? this.temp,
-      ambHumidity: ambHumidity ?? this.ambHumidity,
+      humidityA: humidityA ?? this.humidityA,
       userId: userId ?? this.userId,
       name: name ?? this.name,
+      latest: latest ?? this.latest,
     );
   }
 
@@ -44,7 +59,7 @@ class Device {
       'isConnected': isConnected,
       'humidity': humidity,
       'temp': temp,
-      'ambHumidity': ambHumidity,
+      'ambHumidity': humidityA,
       'userId': userId,
       'name': name,
     };
@@ -52,14 +67,18 @@ class Device {
 
   factory Device.fromMap(Map<String, dynamic> map) {
     return Device(
-      ip: map['ip'] ?? '',
-      isConnected: map['isConnected'] ?? false,
-      humidity: map['humidity']?.toInt() ?? 0,
-      temp: map['temp']?.toInt() ?? 0,
-      ambHumidity: map['ambHumidity']?.toInt() ?? 0,
-      userId: map['userId'] ?? '',
-      name: map['name'] ?? '',
-    );
+        ip: map['ip'] ?? '',
+        isConnected: map['isConnected'] ?? false,
+        humidity: map['humidity'] ?? 0,
+        temp:map['temp'] ?? 0,
+        humidityA: map['humidityA'] ?? 0,
+        userId: map['userId'] ?? '',
+        name: map['name'] ?? '',
+        isActive: map['isActive'],
+        isManual: map['isManual'],
+        watering: map['watering'],
+        celcius: map['celcius'],
+        latest: map['latest']);
   }
 
   String toJson() => json.encode(toMap());
@@ -68,7 +87,7 @@ class Device {
 
   @override
   String toString() {
-    return 'Device(ip: $ip, isConnected: $isConnected, humidity: $humidity, temp: $temp, ambHumidity: $ambHumidity, userId: $userId, name: $name)';
+    return 'Device(ip: $ip, isConnected: $isConnected, humidity: $humidity, temp: $temp, ambHumidity: $humidityA, userId: $userId, name: $name)';
   }
 
   @override
@@ -80,7 +99,7 @@ class Device {
         other.isConnected == isConnected &&
         other.humidity == humidity &&
         other.temp == temp &&
-        other.ambHumidity == ambHumidity &&
+        other.humidityA == humidityA &&
         other.userId == userId &&
         other.name == name;
   }
@@ -91,7 +110,7 @@ class Device {
         isConnected.hashCode ^
         humidity.hashCode ^
         temp.hashCode ^
-        ambHumidity.hashCode ^
+        humidityA.hashCode ^
         userId.hashCode ^
         name.hashCode;
   }

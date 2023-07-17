@@ -52,7 +52,6 @@ class AppBinding {
 
   // Calls [_injectDioForNetworking] prepares base URL
   static Future _injectNetworkingDependencies() async {
-    //  final dio = await _injectDioForNetworking();
     final baseUrl = getIt.get<FlavorConfig>().baseUrl;
     log("BaseUrl from inject: $baseUrl");
   }

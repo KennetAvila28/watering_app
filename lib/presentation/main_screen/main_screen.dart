@@ -5,6 +5,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:watering_system/infrastructure/architecture/bloc/base_state.dart';
+import 'package:watering_system/infrastructure/di/di.dart';
 import 'package:watering_system/presentation/account_screen/account_screen.dart';
 import 'package:watering_system/presentation/auth_screen/auth_screen.dart';
 import 'package:watering_system/presentation/device_screen/device_screen.dart';
@@ -28,7 +29,7 @@ class _MainScreenState extends State<MainScreen> {
   @override
   void initState() {
     super.initState();
-    user = FirebaseAuth.instance.authStateChanges().listen((user) {
+    user = getIt.get<FirebaseAuth>().authStateChanges().listen((user) {
       if (user == null) {
         session = null;
         setState(() {});

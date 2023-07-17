@@ -15,4 +15,6 @@ class DeviceScreenUseCase extends BaseUseCase<DeviceScreenRepository> {
       .doc(getIt.get<FirebaseAuth>().currentUser!.uid)
       .collection('devices')
       .snapshots();
+
+
 }

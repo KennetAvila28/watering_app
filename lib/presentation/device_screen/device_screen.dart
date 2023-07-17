@@ -1,4 +1,3 @@
-import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_svg/flutter_svg.dart';
@@ -12,7 +11,7 @@ class DeviceScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    DeviceScreenCubit cubit = context.read();
+    DeviceScreenCubit cubit = context.read<DeviceScreenCubit>();
     return Scaffold(
       body: SizedBox(
         child: StreamBuilder(
@@ -23,18 +22,20 @@ class DeviceScreen extends StatelessWidget {
                 scrollDirection: Axis.vertical,
                 itemCount: snapshot.data!.docs.length,
                 itemBuilder: (context, index) {
+                  final device = Device.fromMap(snapshot.data!.docs[index]
+                      .data() as Map<String, dynamic>);
                   return Padding(
                     padding: const EdgeInsets.all(2.0),
                     child: Card(
                       elevation: 2,
                       child: ListTile(
                         title: Fonts.normalMediumText(
-                          snapshot.data!.docs[index].get("name"),
+                          device.name,
                         ),
                         subtitle: Column(
                           crossAxisAlignment: CrossAxisAlignment.start,
                           children: [
-                            // Fonts.normalText("Ip: ${item.ip}", size: 12),
+                            Fonts.normalText(device.ip, size: 12),
                             const SizedBox(
                               height: 10,
                             ),
@@ -48,7 +49,7 @@ class DeviceScreen extends StatelessWidget {
                                       width: 14,
                                     ),
                                     Fonts.normalText(
-                                        "%${snapshot.data!.docs[index].get("humidity")}",
+                                        "${device.humidity}%",
                                         size: 14)
                                   ],
                                 ),
@@ -63,7 +64,7 @@ class DeviceScreen extends StatelessWidget {
                                       width: 12,
                                     ),
                                     Fonts.normalText(
-                                        "%${snapshot.data!.docs[index].get("humidityA")}",
+                                        "${device.humidityA}%",
                                         size: 14)
                                   ],
                                 ),
@@ -78,7 +79,7 @@ class DeviceScreen extends StatelessWidget {
                                       width: 12,
                                     ),
                                     Fonts.normalText(
-                                        "%${snapshot.data!.docs[index].get("temp")}",
+                                        "${device.temp}°C",
                                         size: 14)
                                   ],
                                 ),
@@ -88,29 +89,13 @@ class DeviceScreen extends StatelessWidget {
                         ),
                         leading:
                             SvgPicture.asset(getIt.get<Images>().deviceIcon),
-                        trailing: SizedBox(
-                          width: MediaQuery.of(context).size.width * 0.30,
-                          child: Row(
-                            children: [
-                              // SvgPicture.asset(
-                              //   item.isConnected
-                              //       ? getIt.get<Images>().yesConnect
-                              //       : getIt.get<Images>().noConnect,
-                              //   width: 20,
-                              // ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.edit_sharp,
-                                ),
-                              ),
-                              IconButton(
-                                onPressed: () {},
-                                icon: const Icon(
-                                  Icons.delete_forever,
-                                ),
-                              )
-                            ],
+                        trailing: InkWell(
+                          onTap: () => {},
+                          child: SizedBox(
+                            child: SvgPicture.asset(
+                              getIt.get<Images>().settings,
+                              height: 28,
+                            ),
                           ),
                         ),
                       ),
@@ -120,7 +105,7 @@ class DeviceScreen extends StatelessWidget {
               );
             }
             if (snapshot.hasError) {
-              print(snapshot.error);
+              // print(snapshot.error);
               return Center(
                 child: SvgPicture.asset(getIt.get<Images>().sad),
               );

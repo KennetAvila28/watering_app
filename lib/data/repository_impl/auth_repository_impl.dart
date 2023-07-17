@@ -11,7 +11,7 @@ class AuthRepositoryImpl extends AuthRepository {
   AuthRepositoryImpl(this._auth);
 
   final FirebaseAuth _auth;
-
+  
   @override
   Future<BaseResponse<bool, FirebaseErrorResponse>> sendResetPasswordLink(
       String email) async {
@@ -37,7 +37,6 @@ class AuthRepositoryImpl extends AuthRepository {
 
   @override
   Future<void> signOut() async {
-    print("Hello");
     await _auth.signOut();
   }
 }
