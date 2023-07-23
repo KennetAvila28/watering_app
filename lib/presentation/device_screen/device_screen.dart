@@ -87,7 +87,8 @@ class DeviceScreen extends StatelessWidget {
                         leading:
                             SvgPicture.asset(getIt.get<Images>().deviceIcon),
                         trailing: InkWell(
-                          onTap: () => cubit.details(context, device),
+                          onTap: () => cubit.details(
+                              context, snapshot.data!.docs[index].reference),
                           child: SizedBox(
                             child: SvgPicture.asset(
                               getIt.get<Images>().settings,
