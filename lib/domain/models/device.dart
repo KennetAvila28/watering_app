@@ -72,11 +72,11 @@ class Device {
         humidityA: map['humidityA'] ?? 0,
         userId: map['userId'] ?? '',
         name: map['name'] ?? '',
-        isActive: map['isActive'],
-        isManual: map['isManual'],
-        watering: map['watering'],
-        celcius: map['celcius'],
-        latest: map['latest']);
+        isActive: map['isActive'] ??  false,
+        isManual: map['isManual'] ??  false,
+        watering: map['watering'] ??  false,
+        celcius: map['celcius']??false  ,
+        latest: map['latest']?? '');
   }
 
   String toJson() => json.encode(toMap());

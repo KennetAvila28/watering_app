@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:watering_system/infrastructure/di/inject_config.dart';
 import 'package:watering_system/presentation/utils/utils.dart';
+import 'package:watering_system/presentation/widgets/widgets.dart';
 
 class AccountScreen extends StatefulWidget {
   const AccountScreen({super.key});
@@ -11,13 +12,11 @@ class AccountScreen extends StatefulWidget {
 }
 
 class _AccountScreenState extends State<AccountScreen> {
-  final user = getIt    .get<FirebaseAuth>()
-                            .currentUser;
-                            
+  final user = getIt.get<FirebaseAuth>().currentUser;
+
   @override
   Widget build(BuildContext context) {
     return SafeArea(
-        top: false,
         bottom: false,
         child: SingleChildScrollView(
           child: Container(
@@ -33,7 +32,28 @@ class _AccountScreenState extends State<AccountScreen> {
                         'https://upload.wikimedia.org/wikipedia/commons/e/e0/Userimage.png'),
                   ),
                 ),
-                Fonts.normalMediumText(user?.displayName??'Hello', color: Colors.black)
+                Padding(
+                    padding: const EdgeInsets.symmetric(vertical: 8),
+                    child: Fonts.normalMediumText(
+                        user?.displayName ?? user?.email ?? 'Usuario',
+                        color: Colors.black)),
+                Form(
+                  child: Container(
+                    padding: const EdgeInsets.all(15),
+                    child: CustomInputField(
+                      onChanged: (text) {},
+                      label: "Nombre",
+                      prefixIcon: const Icon(Icons.manage_accounts),
+                      inputType: TextInputType.text,
+                      validator: (value) {
+                        if (value == null) {
+                          return "El nombre no puede estar vacio";
+                        }
+                        return null;
+                      },
+                    ),
+                  ),
+                )
               ],
             ),
           ),

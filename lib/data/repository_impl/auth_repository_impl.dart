@@ -39,4 +39,16 @@ class AuthRepositoryImpl extends AuthRepository {
   Future<void> signOut() async {
     await _auth.signOut();
   }
+  
+  @override
+  Future<BaseResponse<UserCredential, FirebaseErrorResponse>> signInGoogle() async {
+    print("Hello");
+    try {
+      final response = await _auth.signInWithProvider(GoogleAuthProvider());
+      return BaseResponse.completed(response);
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+      return BaseResponse.error(FirebaseErrorResponse(message: e.code));
+    }
+  }
 }

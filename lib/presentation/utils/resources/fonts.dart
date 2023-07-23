@@ -8,11 +8,12 @@ class Fonts {
           {TextStyle? style,
           Color? color,
           double size = 14,
-          TextDecoration? underline}) =>
+          TextDecoration? underline,
+          FontWeight fontWeight =  FontWeight.w700}) =>
       Text(text,
           style: style ??
               GoogleFonts.montserrat(
-                fontWeight: FontWeight.w700,
+                fontWeight: fontWeight,
                 color: color,
                 fontSize: size,
                 decoration: underline,

@@ -19,6 +19,16 @@ class AuthScreenCubit extends BaseCubit {
   String email = '';
   String password = '';
   String forgotPass = '';
+  bool rememberme =false;
+
+  void onChangedRemember(bool value){
+    rememberme =  value;
+    print(rememberme);
+    if(rememberme){
+      //save data
+    }
+    //delete data, if exist
+  }
 
   void onChangePass(String input) {
     password = input;
@@ -39,6 +49,16 @@ class AuthScreenCubit extends BaseCubit {
       return;
     }
     final response = await useCase.signInWithEmailAndPassword(email, password);
+    if (!response.success) {
+      emit(FailureState(response.error));
+      return;
+    }
+    emit(SuccessState(response.data));
+  }
+
+   void onGoogle() async {
+    emit(LoadingState());
+    final response = await useCase.signInGoogle();
     if (!response.success) {
       emit(FailureState(response.error));
       return;

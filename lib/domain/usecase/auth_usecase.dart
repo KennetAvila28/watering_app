@@ -1,3 +1,4 @@
+
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:injectable/injectable.dart';
 import 'package:watering_system/domain/repositories/auth_repository.dart';
@@ -18,6 +19,11 @@ class AuthUseCase extends BaseUseCase<AuthRepository> {
   Future<BaseResponse<UserCredential, FirebaseErrorResponse>>
       signInWithEmailAndPassword(String email, String password) async {
     return repository.signInWithEmailAndPassword(email, password);
+  }
+  
+  Future<BaseResponse<UserCredential, FirebaseErrorResponse>>
+      signInGoogle() async {
+    return repository.signInGoogle();
   }
 
   Future<void> signOut() async {

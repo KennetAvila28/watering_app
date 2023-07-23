@@ -14,4 +14,5 @@ abstract class AuthRepository extends BaseRepository {
 
   Future<BaseResponse<bool, FirebaseErrorResponse>> sendResetPasswordLink(
       String email);
+  Future<BaseResponse<UserCredential, FirebaseErrorResponse>> signInGoogle();
 }
