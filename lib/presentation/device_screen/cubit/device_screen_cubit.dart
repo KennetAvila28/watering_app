@@ -1,6 +1,6 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
 import 'package:intl/intl.dart';
-import 'package:watering_system/domain/models/device.dart';
 import 'package:watering_system/domain/usecase/device_screen_usecase.dart';
 import 'package:watering_system/infrastructure/architecture/bloc/base_cubit.dart';
 import 'package:watering_system/infrastructure/architecture/bloc/base_state.dart';
@@ -24,13 +24,9 @@ class DeviceScreenCubit extends BaseCubit {
 
   final DeviceScreenUseCase useCase;
 
-  void details(BuildContext context, Device device) async {
+  void details(BuildContext context, DocumentReference ref) async {
     Navigator.push(
-        context,
-        MaterialPageRoute(
-            builder: (_) => DeviceDetails(
-                  device: device,
-                )));
+        context, MaterialPageRoute(builder: (_) => DeviceDetails(ref: ref)));
   }
   // Future<void> setShopping(bool value) async {
   //   emit(LoadingState());

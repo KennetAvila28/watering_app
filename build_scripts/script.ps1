@@ -1,1 +1,1 @@
-flutter run ./lib/environments/develop.dart
+flutter build apk ./lib/environments/develop.dart
