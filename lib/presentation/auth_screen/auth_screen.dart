@@ -1,12 +1,10 @@
 import 'package:art_sweetalert/art_sweetalert.dart';
-import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:loading_animation_widget/loading_animation_widget.dart';
 import 'package:sign_button/constants.dart';
 import 'package:sign_button/create_button.dart';
 import 'package:watering_system/infrastructure/architecture/bloc/base_state.dart';
-import 'package:watering_system/infrastructure/di/di.dart';
 import 'package:watering_system/infrastructure/utils/show_modal.dart';
 import 'package:watering_system/presentation/auth_screen/cubit/auth_screen_cubit.dart';
 import 'package:watering_system/presentation/auth_screen/internal/forgot_password.dart';

@@ -48,7 +48,7 @@ class DeviceScreen extends StatelessWidget {
                                       fit: BoxFit.scaleDown,
                                       width: 14,
                                     ),
-                                    Fonts.normalText("${device.humidity}%",
+                                    Fonts.normalText("${device.humidity.toStringAsFixed(2)}%",
                                         size: 14)
                                   ],
                                 ),
@@ -62,7 +62,7 @@ class DeviceScreen extends StatelessWidget {
                                       fit: BoxFit.scaleDown,
                                       width: 12,
                                     ),
-                                    Fonts.normalText("${device.humidityA}%",
+                                    Fonts.normalText("${device.humidityA.toStringAsFixed(2)}%",
                                         size: 14)
                                   ],
                                 ),

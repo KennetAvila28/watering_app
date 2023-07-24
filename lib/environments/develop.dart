@@ -15,6 +15,7 @@ void main() async {
       ));
   runZonedGuarded(
     () async {
+      
       await AppInitializer.setupPrerequisites(
         Flavor.dev,
       );
